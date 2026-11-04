@@ -1,0 +1,126 @@
+{
+    "proyectos": [
+        {
+            "id": "proyecto-1",
+            "nombre": "Edificio",
+            "anio": "2026",
+            "area": "Arquitectura",
+            "loc": "Madrid",
+            "status": "",
+            "tipo": "",
+            "premio": "",
+            "tema": "",
+            "texto": [
+                "Texto de presentación del proyecto: dónde está, qué se pedía y cuál es la idea principal. Sustitúyelo por el texto real.",
+                "Segundo párrafo con el desarrollo: materiales, programa, relación con el lugar y decisiones de proyecto."
+            ],
+            "html": "<h4>Texto de presentación del proyecto: dónde está, qué se pedía y cuál es la idea principal. Sustitúyelo por el texto real.</h4><p>Segundo párrafo con el desarrollo: materiales, programa, relación con el lugar y decisiones de proyecto.</p>",
+            "imgs": [
+                {
+                    "src": "proyectos/2026/prueba/p1_1.jpg",
+                    "alt": "Torre de fachada blanca"
+                }
+            ],
+            "portada": ""
+        },
+        {
+            "id": "proyecto-2",
+            "nombre": "Edificio 2",
+            "anio": "2025",
+            "area": "Interiorismo",
+            "loc": "Madrid",
+            "status": "",
+            "tipo": "Vivienda",
+            "premio": "",
+            "tema": "",
+            "texto": [
+                "Texto de presentación del proyecto: dónde está, qué se pedía y cuál es la idea principal. Sustitúyelo por el texto real.",
+                "Segundo párrafo con el desarrollo: materiales, programa, relación con el lugar y decisiones de proyecto."
+            ],
+            "html": "<p>Texto de presentación del proyecto: dónde está, qué se pedía y cuál es la idea principal. Sustitúyelo por el texto real.</p><p>Segundo párrafo con el desarrollo: materiales, programa, relación con el lugar y decisiones de proyecto.</p>",
+            "imgs": [
+                {
+                    "src": "proyectos/2026/prueba/p2_1.jpg",
+                    "alt": "Patio entre muros de piedra"
+                },
+                {
+                    "src": "proyectos/2026/prueba/p2_2.jpg",
+                    "alt": "Pabellón junto a una piscina"
+                },
+                {
+                    "src": "proyectos/2026/prueba/p2_3.jpg",
+                    "alt": "Terraza al atardecer"
+                },
+                {
+                    "src": "proyectos/2026/prueba/p2_4.jpg",
+                    "alt": "Salón con alfombra y muebles de madera"
+                },
+                {
+                    "src": "proyectos/2026/prueba/p2_5.jpg",
+                    "alt": "Salón bajo cubierta de vigas"
+                },
+                {
+                    "src": "proyectos/2026/prueba/p2_6.jpg",
+                    "alt": "Casa en el paisaje"
+                }
+            ],
+            "portada": ""
+        },
+        {
+            "id": "proyecto-3",
+            "nombre": "Edificio 3",
+            "anio": "2024",
+            "area": "Arquitectura",
+            "loc": "Madrid",
+            "status": "",
+            "tipo": "",
+            "premio": "",
+            "tema": "",
+            "texto": [
+                "Texto de presentación del proyecto: dónde está, qué se pedía y cuál es la idea principal. Sustitúyelo por el texto real.",
+                "Segundo párrafo con el desarrollo: materiales, programa, relación con el lugar y decisiones de proyecto."
+            ],
+            "html": "<p>Texto de presentación del proyecto: dónde está, qué se pedía y cuál es la idea principal. Sustitúyelo por el texto real.</p><p>Segundo párrafo con el desarrollo: materiales, programa, relación con el lugar y decisiones de proyecto.</p>",
+            "imgs": [
+                {
+                    "src": "proyectos/2026/prueba/p3_1.jpg",
+                    "alt": "Sección del edificio"
+                },
+                {
+                    "src": "proyectos/2026/prueba/p3_2.jpg",
+                    "alt": "Alzado del edificio"
+                },
+                {
+                    "src": "proyectos/2026/prueba/p3_3.jpg",
+                    "alt": "Vestíbulo con plano de luz"
+                },
+                {
+                    "src": "proyectos/2026/prueba/p3_4.jpg",
+                    "alt": "Edificio de oficinas oscuro al anochecer"
+                }
+            ],
+            "portada": "proyectos/2026/prueba/p3_4.jpg"
+        }
+    ],
+    "artefactos": [
+        {
+            "id": "atril",
+            "nombre": "atril",
+            "frase": "mueble en forma de plano inclinado con pie o sin él",
+            "imgs": [
+                {
+                    "src": "artefactos/prueba/artefacto_3.jpg",
+                    "alt": "Esquemas del atril en distintas posiciones"
+                },
+                {
+                    "src": "artefactos/prueba/artefacto_2.jpg",
+                    "alt": "Seis fotografías del atril de chapa en uso"
+                },
+                {
+                    "src": "artefactos/prueba/artefacto_1.jpg",
+                    "alt": "Atril azul junto a un libro naranja"
+                }
+            ]
+        }
+    ]
+}
