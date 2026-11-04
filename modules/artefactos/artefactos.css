@@ -23,7 +23,7 @@
 /* Visor a pantalla completa */
 .lb[hidden],.lb-btn[hidden]{display:none}
 .lb-open,.lb-open body{overflow:hidden}
-.lb{position:fixed;inset:0;z-index:100;background:rgba(0,0,0,.94);color:#fff;
+.lb{position:fixed;inset:0;z-index:100;background:#707070;color:#fff;
   display:flex;flex-direction:column;align-items:center;justify-content:center;
   padding:calc(env(safe-area-inset-top,0px) + 3.5rem) 1rem calc(env(safe-area-inset-bottom,0px) + 1rem)}
 .lb-stage{flex:1;min-height:0;width:100%;display:flex;align-items:center;justify-content:center;overflow:hidden}

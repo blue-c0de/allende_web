@@ -60,4 +60,47 @@ function esc(t){ return String(t).replace(/[&<>"]/g,function(c){return {'&':'&am
     e.preventDefault();
     t.scrollIntoView({behavior: reduced ? 'auto' : 'smooth'});
   });
+  /* ---------- Filas de imágenes: barra de desplazamiento fina encima de las fotos ----------
+     Solo se crea en las filas con más fotos de las que caben. Se puede arrastrar. */
+  function colocarBarra(sc, bar){
+    var t = bar.firstChild, sobra = sc.scrollWidth - sc.clientWidth;
+    bar.style.left = sc.offsetLeft + 'px';
+    bar.style.width = sc.clientWidth + 'px';
+    bar.style.top = (sc.offsetTop + sc.clientHeight - bar.offsetHeight) + 'px';
+    var w = Math.max(40, sc.clientWidth * sc.clientWidth / sc.scrollWidth);
+    t.style.width = w + 'px';
+    t.style.transform = 'translateX(' + (sobra > 0 ? sc.scrollLeft / sobra * (sc.clientWidth - w) : 0) + 'px)';
+  }
+  function crearBarra(sc){
+    var bar = document.createElement('span'); bar.className = 'prj-bar'; bar.setAttribute('aria-hidden','true');
+    bar.innerHTML = '<span class="prj-thumb"></span>';
+    sc.parentElement.appendChild(bar);
+    var t = bar.firstChild, x0 = 0, s0 = 0;
+    sc.addEventListener('scroll', function(){ colocarBarra(sc, bar); }, {passive:true});
+    t.addEventListener('pointerdown', function(e){
+      e.preventDefault(); e.stopPropagation();
+      x0 = e.clientX; s0 = sc.scrollLeft;
+      t.setPointerCapture(e.pointerId); bar.classList.add('drag');
+    });
+    t.addEventListener('pointermove', function(e){
+      if (!t.hasPointerCapture(e.pointerId)) return;
+      var w = t.offsetWidth, sobra = sc.scrollWidth - sc.clientWidth;
+      sc.scrollLeft = s0 + (e.clientX - x0) * sobra / Math.max(1, sc.clientWidth - w);
+    });
+    var soltar = function(){ bar.classList.remove('drag'); };
+    t.addEventListener('pointerup', soltar); t.addEventListener('pointercancel', soltar);
+    // Que al soltar la barra no se abra el proyecto
+    t.addEventListener('click', function(e){ e.preventDefault(); e.stopPropagation(); });
+    return bar;
+  }
+  function barras(){
+    document.querySelectorAll('.prj-imgs').forEach(function(sc){
+      var bar = sc.parentElement.querySelector(':scope > .prj-bar');
+      if (sc.scrollWidth - sc.clientWidth <= 1){ if (bar) bar.remove(); return; }
+      colocarBarra(sc, bar || crearBarra(sc));
+    });
+  }
+  document.addEventListener('pintado', function(){ requestAnimationFrame(barras); });
+  window.addEventListener('resize', barras);
+  window.addEventListener('load', barras);
 })();

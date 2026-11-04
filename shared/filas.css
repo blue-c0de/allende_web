@@ -16,14 +16,22 @@
   .prj-meta b{font-weight:400}.prj-meta span{font-weight:300;color:var(--muted)}
 }
 .prj-imgs{display:flex}
-/* Si las fotos no caben en el ancho, la fila se desplaza en horizontal (proyectos y artefactos) */
+/* Si las fotos no caben en el ancho, la fila se desplaza en horizontal (proyectos y artefactos).
+   La barra del navegador se oculta; en su lugar, shared/comun.js pone una barra fina (.prj-bar)
+   flotando sobre la parte de abajo de las fotos, que solo se ve al pasar el ratón por la fila. */
+.prj{position:relative}
 .prj-imgs{min-width:0;max-width:100%;overflow-x:auto;overscroll-behavior-x:contain;
-  scrollbar-width:thin;scrollbar-color:var(--line) transparent;-webkit-overflow-scrolling:touch}
-.prj-imgs:hover{scrollbar-color:var(--muted) transparent}
-.prj-imgs::-webkit-scrollbar{height:4px}
-.prj-imgs::-webkit-scrollbar-thumb{background:var(--line);border-radius:2px}
-.prj-imgs:hover::-webkit-scrollbar-thumb{background:var(--muted)}
-.prj-imgs::-webkit-scrollbar-track{background:transparent}
+  scrollbar-width:none;-webkit-overflow-scrolling:touch}
+.prj-imgs::-webkit-scrollbar{display:none}
+.prj-bar{position:absolute;z-index:2;height:22px;pointer-events:none;opacity:0;transition:opacity .3s}
+.prj-thumb{position:absolute;left:0;bottom:6px;height:6px;border-radius:3px;background:rgba(255,255,255,.9);
+  box-shadow:0 0 0 .5px rgba(0,0,0,.3);pointer-events:auto;cursor:grab;transition:height .2s,bottom .2s}
+/* Zona para cogerla más grande que la propia barra, para que sea fácil acertar */
+.prj-thumb::before{content:"";position:absolute;inset:-8px 0 -6px}
+.prj-bar:hover .prj-thumb,.prj-bar.drag .prj-thumb{height:9px;bottom:5px;border-radius:5px}
+.prj-bar.drag .prj-thumb{cursor:grabbing}
+/* Solo con el ratón encima de las fotos (y mientras se arrastra) */
+.prj-imgs:hover ~ .prj-bar,.prj-bar:hover,.prj-bar.drag{opacity:1}
 .prj-tip{position:fixed;left:0;top:0;z-index:40;pointer-events:none;display:flex;gap:.7rem;align-items:baseline;
   background:var(--ink);color:var(--bg);padding:.4rem .7rem .45rem;font-size:.9844rem;line-height:1.2;white-space:nowrap;
   opacity:0;transition:opacity .15s}
