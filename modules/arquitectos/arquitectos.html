@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>allende arquitectos</title>
+<link rel="icon" type="image/svg+xml" href="../../favicon.svg">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Source+Sans+3:ital,wght@0,300;0,400;0,600;1,300&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="../../shared/base.css">
+<link rel="stylesheet" href="../../shared/admin.css">
+<link rel="stylesheet" href="../../shared/filas.css">
+</head>
+<body>
+
+<!-- ============ 3a. ARQUITECTOS ============ -->
+<section class="view is-active" id="v-arquitectos" data-view="arquitectos" aria-label="allende arquitectos">
+  <header class="nav">
+    <a class="nav-here" href="../arquitectos/arquitectos.html" aria-label="allende arquitectos, estás aquí" aria-current="page">
+      <span class="wm"><span class="w1">allende</span><span data-sym="arq"></span><span class="w2">arquitectos</span></span>
+    </a>
+    <nav class="nav-links" aria-label="Navegación">
+      <a class="nav-sec" href="../arquitectos/arquitectos.html#arq-proyectos" data-scroll="arq-proyectos">Proyectos</a>
+      <a class="nav-about" href="../sobre-nosotros/sobre-nosotros.html"><span class="l-full">Sobre nosotros</span><span class="l-short">Nosotros</span></a>
+      <span class="nav-sep nav-sec" aria-hidden="true"></span>
+      <a class="nav-other" href="../artefactos/artefactos.html" aria-label="Ir a Allende Artefactos">
+        <span class="wm"><span class="w1">allende</span><span data-sym="art"></span><span class="w2">artefactos</span></span>
+      </a>
+      <a class="nav-home" href="../inicio/inicio.html">
+        <svg viewBox="0 0 16 16" aria-hidden="true"><path d="M2.5 7.5 8 3l5.5 4.5V13h-11z" fill="none" stroke="currentColor" stroke-width="1.2"/></svg><span>Inicio</span>
+      </a>
+    </nav>
+  </header>
+
+  <main>
+
+    <section class="wrap sec" id="arq-proyectos" style="padding-top:clamp(2rem,4vw,3rem)">
+      <div class="sec-h" style="border-top:0;padding-top:0"><h1 style="font-weight:400;font-size:clamp(1.6rem,3vw,2.2rem);line-height:1.15">Proyectos</h1></div>
+      <div class="prj-list" id="prj-list"></div>
+    </section>
+
+  </main>
+  <footer data-footer="allende arquitectos" data-sym="arq"></footer>
+</section>
+
+<script src="../../shared/comun.js"></script>
+<script src="../../shared/datos.js"></script>
+<script src="arquitectos.js"></script>
+<script src="../../shared/admin.js"></script>
+</body>
+</html>

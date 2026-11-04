@@ -1,0 +1,133 @@
+/* Común a todas las páginas: colores, tipografía, logotipo, menú, maquetación y pie */
+/* ---------- Tokens (Manual de identidad) ---------- */
+:root{
+  --rojo:#D50032;          /* Pantone 199C */
+  --naranja:#E67D3B;       /* allende artefactos */
+  --negro:#000000;
+  --blanco:#FFFFFF;
+  --bg:#FFFFFF;
+  --ink:#000000;
+  --muted:#6B6B6B;
+  --line:#D9D9D9;
+  --sheet:#F5F5F5;
+  --font:"Myriad Pro","Source Sans 3","Segoe UI","Helvetica Neue",Arial,sans-serif;
+  --nav-h:64px;
+  color-scheme:light;
+  box-sizing:border-box;
+  padding-top:env(safe-area-inset-top,0px);
+  padding-bottom:env(safe-area-inset-bottom,0px);
+}
+@media (prefers-color-scheme:dark){
+  :root:not([data-theme="light"]){
+    --bg:#000000; --ink:#FFFFFF; --muted:#A3A3A3; --line:#333333; --sheet:#141414;
+    color-scheme:dark;
+  }
+}
+:root[data-theme="dark"]{
+  --bg:#000000; --ink:#FFFFFF; --muted:#A3A3A3; --line:#333333; --sheet:#141414;
+  color-scheme:dark;
+}
+*,*::before,*::after{box-sizing:inherit;margin:0;padding:0}
+html{height:100%;scroll-padding-top:calc(env(safe-area-inset-top,0px) + var(--nav-h))}
+body{height:100%;background:var(--bg);color:var(--ink);font-family:var(--font);font-weight:400;
+  font-size:1.0625rem;line-height:1.5;-webkit-font-smoothing:antialiased}
+img{max-width:100%;display:block}
+a{color:inherit}
+button{font:inherit;color:inherit;background:none;border:0;cursor:pointer}
+:focus-visible{outline:2px solid var(--rojo);outline-offset:4px}
+
+/* ---------- Vistas ---------- */
+.view{display:none;min-height:100%}
+.view.is-active{display:flex;flex-direction:column}
+
+/* ---------- Símbolo y logotipo ---------- */
+/* El cuadrado mide lo que va de ascendentes a descendentes (≈0,92em en Myriad / Source Sans) */
+.sym{height:.92em;width:auto;vertical-align:-.21em;overflow:visible;flex:none}
+.sym .sq{fill:var(--rojo)}
+.sym .bar,.sym .tick{fill:var(--ink)}
+.sym.art .sq{fill:none;stroke:var(--rojo);stroke-width:1.6}
+.sym.art .tick{fill:var(--ink)}
+.sym.neg .sq{fill:none;stroke:var(--blanco);stroke-width:1.4}
+.sym.neg .bar,.sym.neg .tick{fill:var(--blanco)}
+.sym.neg.art .sq{stroke:var(--blanco);stroke-width:1.4}
+
+.wm{display:inline-flex;align-items:baseline;white-space:nowrap;letter-spacing:-.005em;line-height:1}
+.wm .w1{font-weight:400}
+.wm .w2{font-weight:300}
+.wm .sym{margin:0 .3em 0 .32em;transform:translateY(.21em)}
+
+/* ---------- 3. Páginas de sección ---------- */
+.nav{position:sticky;top:0;z-index:20;height:var(--nav-h);display:flex;align-items:center;justify-content:space-between;
+  gap:1rem;padding:0 clamp(1rem,4vw,3rem);background:var(--bg);border-bottom:1px solid var(--line)}
+.nav-here{text-decoration:none;font-size:1.5rem}
+.nav-links{display:flex;align-items:center;gap:clamp(.9rem,2.4vw,2rem);font-size:.9844rem}
+.nav-links button,.nav-links a{text-decoration:none;font-weight:300;color:var(--muted);transition:color .2s}
+.nav-links button:hover,.nav-links a:hover{color:var(--ink)}
+.nav-sep{width:1px;height:1.25rem;background:var(--line)}
+.nav-other .wm{font-size:1.0625rem}
+.nav-other:hover .wm{color:var(--ink)}
+.nav-home{display:inline-flex;align-items:center;gap:.45rem}
+.nav-home svg{width:1rem;height:1rem}
+@media (max-width:760px){
+  .nav-sec{display:none}
+  .nav-here{font-size:1.2rem}
+  .nav-other .wm .w1{display:none}
+  .nav-other .wm .sym{margin-left:0}
+  .nav-home span{display:none}
+}
+@media (max-width:420px){ .nav-other .wm .w2{display:none} .nav-here{font-size:1.1rem} }
+
+main{flex:1}
+.wrap{width:min(100% - 2*clamp(1rem,4vw,3rem),1200px);margin-inline:auto}
+.sec{padding:clamp(3.5rem,8vw,6.5rem) 0}
+.sec-h{display:flex;align-items:baseline;justify-content:space-between;gap:1rem;margin-bottom:2.25rem;
+  border-top:1px solid var(--ink);padding-top:.9rem}
+.sec-h h2{font-weight:400;font-size:clamp(1.6rem,3vw,2.2rem);line-height:1.15}
+.sec-h p{color:var(--muted);font-weight:300;font-size:1rem}
+
+/* Enlace de la página actual en el menú */
+.nav-about .l-short{display:none}
+.nav-links a[aria-current="page"]{color:var(--ink);text-decoration:underline;text-decoration-color:var(--rojo);text-underline-offset:6px;text-decoration-thickness:2px}
+@media (max-width:760px){.nav-about .l-full{display:none}.nav-about .l-short{display:inline}}
+
+/* ---------- 4. Footer ---------- */
+/* Una sola fila fina, como el menú de arriba: fondo claro, línea fina y texto oscuro.
+   Izquierda: © | centro: contacto | derecha: redes sociales (el hueco queda reservado).
+   Usa el mismo ancho y márgenes que .wrap, así queda alineado con el contenido de las páginas. */
+.foot{background:var(--bg);color:var(--ink);border-top:1px solid var(--line);
+  padding:.5rem 0 calc(.5rem + env(safe-area-inset-bottom,0px))}
+.foot-in{display:grid;grid-template-columns:auto 1fr auto;align-items:center;gap:.4rem 2rem;min-height:24px;
+  width:min(100% - 2*clamp(1rem,4vw,3rem),1200px);margin-inline:auto;font-size:.8125rem;line-height:1.4}
+.foot-brand{display:flex;align-items:baseline;gap:1rem}
+.foot-copy{font-weight:300;color:var(--muted);white-space:nowrap}
+.foot-copy .wm{color:var(--ink)}
+/* "acceder": del mismo color que el fondo (blanco); se adivina al pasar el ratón o con el teclado */
+.foot-acc{font-size:inherit;font-weight:300;color:var(--bg);transition:color .3s}
+.foot-acc:hover,.foot-acc:focus-visible{color:var(--muted)}
+.aviso-datos{color:var(--muted);font-weight:300}
+.aviso-datos code{font-size:.9em}
+/* Contacto en una línea, separado por puntos finos */
+.foot-contact{font-weight:300;font-style:normal;display:flex;flex-wrap:wrap;column-gap:0}
+.foot-contact br{display:none}
+.foot-contact a{color:var(--ink);text-decoration:none;transition:color .2s}
+.foot-contact a:hover{color:var(--rojo)}
+.foot-contact a::before{content:"·";color:var(--muted);margin:0 .65rem}
+/* Redes: iconos pequeños alineados a la derecha */
+.foot-social{display:flex;gap:.8rem;justify-content:flex-end;align-items:center}
+.foot-social a{width:22px;height:22px;display:grid;place-items:center;border-radius:50%;transition:transform .2s}
+.foot-social a:hover{transform:translateY(-2px)}
+.foot-social svg{width:18px;height:18px}
+@media (max-width:820px){
+  .foot-in{grid-template-columns:1fr auto}
+  .foot-contact{grid-column:1/-1;grid-row:2}
+}
+@media (max-width:600px){
+  .foot-contact{column-gap:1.1rem}
+  .foot-contact a::before{display:none}
+}
+.sr{position:absolute;width:1px;height:1px;overflow:hidden;clip:rect(0 0 0 0);white-space:nowrap}
+
+/* ---------- OCULTO TEMPORALMENTE ----------
+   Para volver a mostrarlos, borra la línea correspondiente. */
+.nav-about{display:none !important}     /* enlace "Sobre nosotros" del menú */
+.foot-social{display:none !important}   /* iconos de redes sociales del pie */

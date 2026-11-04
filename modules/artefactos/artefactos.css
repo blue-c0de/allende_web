@@ -1,0 +1,40 @@
+/* Filas de artefactos: mismo sistema que proyectos; el primer cuadro es texto */
+.art-txt{width:var(--tile);height:var(--tile);flex:none;box-sizing:border-box;background:var(--sheet);
+  display:flex;flex-direction:column;justify-content:space-between;padding:calc(var(--tile)*.09);overflow:hidden}
+.art-txt b{font-weight:400;font-size:calc(var(--tile)*.13);line-height:1.05}
+.art-txt i{font-weight:300;font-size:calc(var(--tile)*.078);line-height:1.25;color:var(--muted)}
+@media (max-width:760px){
+  .art-txt{display:none}
+  .art{flex-direction:column;gap:.45rem}
+  .art .prj-meta{display:flex;flex-wrap:wrap;gap:.25rem .6rem;font-size:.9375rem}
+  .art .prj-meta b{font-weight:400}.art .prj-meta span{font-weight:300;font-style:italic;color:var(--muted)}
+}
+@media (hover:none){ .art-txt{display:none} }
+
+/* El desplazamiento horizontal de la fila está en shared/filas.css.
+   El cuadro con el nombre se queda fijo a la izquierda mientras pasan las fotos. */
+.art-txt{position:sticky;left:0;z-index:1}
+
+/* Fotos que se pueden ampliar */
+.art-zoom{flex:none;display:block;cursor:zoom-in}
+.art-zoom img{transition:opacity .2s}
+.art-zoom:hover img{opacity:.85}
+
+/* Visor a pantalla completa */
+.lb[hidden],.lb-btn[hidden]{display:none}
+.lb-open,.lb-open body{overflow:hidden}
+.lb{position:fixed;inset:0;z-index:100;background:rgba(0,0,0,.94);color:#fff;
+  display:flex;flex-direction:column;align-items:center;justify-content:center;
+  padding:calc(env(safe-area-inset-top,0px) + 3.5rem) 1rem calc(env(safe-area-inset-bottom,0px) + 1rem)}
+.lb-stage{flex:1;min-height:0;width:100%;display:flex;align-items:center;justify-content:center;overflow:hidden}
+.lb-img{width:100%;height:100%;object-fit:contain;cursor:zoom-in;transition:transform .3s cubic-bezier(.2,.7,.2,1)}
+.lb.is-zoomed .lb-img{cursor:zoom-out}
+.lb-cap{display:flex;gap:.7rem;align-items:baseline;padding-top:.9rem;font-size:.9844rem}
+.lb-cap b{font-weight:400}.lb-cap span{font-weight:300;opacity:.7}
+.lb-btn{position:absolute;color:#fff;font-size:2.2rem;line-height:1;width:3rem;height:3rem;display:grid;place-items:center;opacity:.75;transition:opacity .2s}
+.lb-btn:hover{opacity:1}
+.lb-close{top:calc(env(safe-area-inset-top,0px) + .5rem);right:.75rem}
+.lb-prev{left:.5rem;top:50%;transform:translateY(-50%);font-size:3rem}
+.lb-next{right:.5rem;top:50%;transform:translateY(-50%);font-size:3rem}
+.lb.is-zoomed .lb-prev,.lb.is-zoomed .lb-next{opacity:0;pointer-events:none}
+@media (prefers-reduced-motion:reduce){.lb-img{transition:none}}

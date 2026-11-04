@@ -1,0 +1,32 @@
+/* Filas de imágenes: lista de proyectos (arquitectos) y de artefactos */
+.prj-list{--tile:min(160px,calc((100vw - 2*clamp(1rem,4vw,3rem))/6));display:flex;flex-direction:column;align-items:flex-start}
+.prj{display:flex;flex-wrap:nowrap;text-decoration:none;max-width:100%;transition:opacity .35s}
+.prj img{width:var(--tile);height:var(--tile);object-fit:cover;flex:none;background:var(--sheet)}
+.prj-meta{display:none}
+@media (hover:hover){
+  .prj-list:hover .prj{opacity:.28}
+  .prj-list .prj:hover,.prj-list .prj:focus-visible{opacity:1}
+}
+@media (hover:none){
+  .prj-hint{display:none}
+  .prj-list{gap:1.25rem}
+  .prj{flex-direction:column;gap:.45rem}
+  .prj-imgs{display:flex}
+  .prj-meta{display:flex;gap:.6rem;font-size:.9375rem}
+  .prj-meta b{font-weight:400}.prj-meta span{font-weight:300;color:var(--muted)}
+}
+.prj-imgs{display:flex}
+/* Si las fotos no caben en el ancho, la fila se desplaza en horizontal (proyectos y artefactos) */
+.prj-imgs{min-width:0;max-width:100%;overflow-x:auto;overscroll-behavior-x:contain;
+  scrollbar-width:thin;scrollbar-color:var(--line) transparent;-webkit-overflow-scrolling:touch}
+.prj-imgs:hover{scrollbar-color:var(--muted) transparent}
+.prj-imgs::-webkit-scrollbar{height:4px}
+.prj-imgs::-webkit-scrollbar-thumb{background:var(--line);border-radius:2px}
+.prj-imgs:hover::-webkit-scrollbar-thumb{background:var(--muted)}
+.prj-imgs::-webkit-scrollbar-track{background:transparent}
+.prj-tip{position:fixed;left:0;top:0;z-index:40;pointer-events:none;display:flex;gap:.7rem;align-items:baseline;
+  background:var(--ink);color:var(--bg);padding:.4rem .7rem .45rem;font-size:.9844rem;line-height:1.2;white-space:nowrap;
+  opacity:0;transition:opacity .15s}
+.prj-tip.on{opacity:1}
+.prj-tip b{font-weight:400}.prj-tip span{font-weight:300;opacity:.75}
+.prj-tip::before{content:"";width:.55rem;height:.55rem;background:var(--rojo);align-self:center}

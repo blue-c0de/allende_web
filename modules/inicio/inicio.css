@@ -1,0 +1,28 @@
+/* ---------- 1. Inicio ---------- */
+#v-inicio{align-items:center;justify-content:center;background:var(--bg)}
+.intro{display:flex;flex-direction:column;align-items:center;gap:.9rem;text-decoration:none;padding:2rem;border-radius:2px}
+/* Logo pequeño y delicado (antes min(42vw,220px)) */
+.intro .big{width:min(5vw,26px);height:auto;overflow:visible}
+.intro .big .sq{fill:var(--rojo);transform-origin:30px 20px}
+.intro .big .bar,.intro .big .tick{fill:var(--ink)}
+.intro .big .bar{transform-origin:0 8px}
+.intro .big .tick{transform-origin:41px 40px}
+.intro-hint{font-weight:200;font-size:.6875rem;color:var(--muted);letter-spacing:.28em;text-transform:lowercase;
+  padding-left:.28em;transition:color .6s ease}
+.intro:hover .intro-hint{color:var(--ink)}
+.intro:hover .big .bar{transform:scaleX(1.15)}
+.intro .big .bar{transition:transform .9s cubic-bezier(.2,.7,.2,1)}
+
+@media (prefers-reduced-motion:no-preference){
+  .play .big .sq{animation:sq 1.2s cubic-bezier(.2,.7,.2,1) both}
+  .play .big .bar{animation:bar 1s .7s cubic-bezier(.2,.7,.2,1) both}
+  .play .big .tick{animation:tick .7s 1.3s cubic-bezier(.2,.7,.2,1) both}
+  .play .intro-hint{animation:fade 1.2s 1.8s both}
+  .leaving .big{animation:out .55s cubic-bezier(.6,0,.3,1) forwards}
+  .leaving .intro-hint{opacity:0;transition:opacity .3s}
+}
+@keyframes sq{from{transform:scale(0)}to{transform:scale(1)}}
+@keyframes bar{from{transform:scaleX(0)}to{transform:scaleX(1)}}
+@keyframes tick{from{transform:scaleY(0)}to{transform:scaleY(1)}}
+@keyframes fade{from{opacity:0}to{opacity:1}}
+@keyframes out{to{transform:scale(6);opacity:0}}

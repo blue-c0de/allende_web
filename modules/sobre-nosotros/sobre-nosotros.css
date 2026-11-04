@@ -1,0 +1,25 @@
+/* Sobre nosotros (página propia) */
+.ph-x{background:
+  linear-gradient(to top right,transparent calc(50% - .5px),var(--line) 50%,transparent calc(50% + .5px)),
+  linear-gradient(to top left,transparent calc(50% - .5px),var(--line) 50%,transparent calc(50% + .5px)),var(--sheet)}
+.sob{flex:1;padding-top:clamp(2.5rem,6vw,4.5rem)}
+.sob-top{display:grid;grid-template-columns:7fr 5fr;gap:clamp(1.5rem,5vw,4rem);align-items:end}
+.sob h1{font-weight:400;font-size:clamp(2.4rem,6vw,4.8rem);line-height:1;letter-spacing:-.015em;margin-bottom:1.5rem}
+.sob-lead{font-weight:300;font-size:clamp(1.2rem,2vw,1.5rem);line-height:1.45;max-width:30em;color:var(--muted)}
+.sob-photo{aspect-ratio:4/5}
+.sob-cols{display:grid;grid-template-columns:1fr 1fr;gap:clamp(1.5rem,5vw,4rem)}
+.sob-cols p{font-weight:300;font-size:1.125rem;line-height:1.65;color:var(--muted);max-width:34em}
+.sob-cols .bones{margin-top:.4rem}
+.sob-team{display:grid;grid-template-columns:repeat(4,1fr);gap:clamp(.75rem,2vw,1.5rem)}
+.sob-person{display:flex;flex-direction:column;gap:.2rem}
+.sob-person .ph-x{aspect-ratio:3/4;margin-bottom:.6rem}
+.sob-person b{font-weight:400}
+.sob-person span{font-weight:300;color:var(--muted);font-size:.9375rem}
+.sob-tray div{display:grid;grid-template-columns:8rem 1fr;gap:1rem;padding:1rem 0;border-bottom:1px solid var(--line);font-weight:300}
+.sob-tray div span:first-child{color:var(--muted)}
+.sob-contact{font-style:normal;font-weight:300;font-size:1.25rem;line-height:1.7}
+.sob-contact a{text-underline-offset:3px}
+@media (max-width:760px){.sob-top,.sob-cols{grid-template-columns:1fr}.sob-team{grid-template-columns:1fr 1fr}}
+.bones{display:grid;gap:.6rem;margin-top:1.75rem}
+.bones i{display:block;height:.6rem;background:var(--sheet);border-radius:1px}
+.bones i:nth-child(2){width:92%}.bones i:nth-child(3){width:78%}.bones i:nth-child(4){width:60%}

@@ -1,0 +1,35 @@
+/* ---------- 2. Selección ---------- */
+#v-seleccion{position:relative;background:var(--bg)}
+.split{flex:1;display:flex;align-items:center;justify-content:center;min-height:100%;padding:4rem 1.5rem}
+
+/* Una sola rejilla para los dos logotipos: "allende" | símbolo | nombre.
+   Así los símbolos quedan uno encima del otro y la línea mide lo que la frase más larga. */
+.sel{display:grid;grid-template-columns:auto auto auto;row-gap:1.6rem;
+  font-size:clamp(1.15rem,3.4vw,1.65rem)}
+.half{grid-column:1/-1;display:grid;grid-template-columns:subgrid;align-items:baseline;
+  text-decoration:none;color:var(--ink);transition:opacity .6s ease}
+.half .wm{display:contents}
+.half .w1{font-weight:300;justify-self:end}
+.half .w2{font-weight:200;justify-self:start}
+.half .sym .bar{transform-origin:0 8px;transition:transform .9s cubic-bezier(.2,.7,.2,1)}
+.half:hover .sym .bar,.half:focus-visible .sym .bar{transform:scaleX(1.2)}
+@media (hover:hover){
+  .sel:hover .half{opacity:.3}
+  .sel .half:hover,.sel .half:focus-visible{opacity:1}
+}
+
+/* Divisor: línea finísima que se desvanece en los extremos */
+.sel-div{grid-column:1/-1;height:1px;width:100%;
+  background:linear-gradient(90deg,transparent,var(--line) 18%,var(--line) 82%,transparent)}
+
+@media (prefers-reduced-motion:no-preference){
+  .half{animation:sel-fade 1.1s .15s backwards}
+  .half-art{animation-delay:.45s}
+  .sel-div{transform-origin:center;animation:sel-line 1.2s .3s cubic-bezier(.2,.7,.2,1) both}
+}
+@keyframes sel-fade{from{opacity:0}to{opacity:1}}
+@keyframes sel-line{from{transform:scaleX(0);opacity:0}to{transform:scaleX(1);opacity:1}}
+
+.back-home{position:absolute;top:1.1rem;left:1.25rem;z-index:2;font-size:.8125rem;font-weight:200;letter-spacing:.06em;
+  text-decoration:none;color:var(--muted);display:inline-flex;gap:.4rem;align-items:center;transition:color .4s}
+.back-home:hover{color:var(--ink)}
